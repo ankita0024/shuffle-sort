@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Suffle and Sort</title>
+    <script>
+        var numberList = [];
+
+        function shuffle() {
+            let tempVar, randomVar;
+            var inputs = '';
+            var cardList = document.getElementById("cardList");
+            numberList = numberList.sort(() => Math.random() - 0.5)
+            for (let i = 1; i < numberList.length + 1; i++) {
+                let cardItem = cardList.getElementsByClassName('card' + i);
+                cardItem[0].innerHTML = numberList[i - 1];
+            }
+        }
+
+        function sort() {
+            numberList.sort();
+            for (let i = 1; i <= numberList.length; i++) {
+                let cardItem = cardList.getElementsByClassName('card' + i);
+                cardItem[0].innerHTML = numberList[i - 1];
+            }
+        }
+        window.onload = function() {
+            var inputs = '';
+            var cardList = document.getElementById("cardList");
+            for (let i = 1; i < 10; i++) {
+                inputs += "<div class='card" + i + "'>" + i + "</div>";
+                numberList.push(i)
+            }
+            cardList.innerHTML = inputs;
+        }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <div class="mainBody">
+        <header>
+            <h1>Shuffle and Sort</h1>
+        </header>
+        <aside>
+            <div class="buttonList">
+                <button class="button" onclick="shuffle()">SHUFFLE</button>
+                <button class="button" onclick="sort()">SORT</button>
+            </div>
+        </aside>
+        <section>
+            <article>
+                <div id="cardList"></div>
+            </article>
+        </section>
+
+        <footer>
+            Shuffle and Sort by Ankita Gupta
+        </footer>
+    </div>
+</body>
+
+</html>
